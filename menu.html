@@ -5,10 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | One Fell Soup</title>
+
+    <style>
+
+        body {
+            max-width: max-content;
+            margin: auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+        .soup-item {
+            width: 150px;
+            height: 150px;
+            background-color: bisque;
+            border: 2px darkgoldenrod solid;
+            flex-grow: 1;
+        }
+
+        .soup-grid {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-evenly;
+            gap: 50px;
+            align-items: center;
+            width: 70vw;
+            height: 300px;
+            border: 2px darkgoldenrod solid;
+        }
+    </style>
 </head>
 <body>
-    <h1>Menu</h1>
+    <header>
+        
+        <!-- place logo to left and title/nav bar to right?-->
+        <img src="logo_placeholder.png" >
+        <h1>One Fell Soup</h1>
+        <ul>
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Shopping Cart</li>
+        </ul>
+    </header>
 
-    <p>This is a menu.</p>
+    <h2>Menu</h1>
+
+    <div class="soup-grid">
+        <div class="soup-item"></div>
+        <div class="soup-item"></div>
+        <div class="soup-item"></div>
+        <div class="soup-item"></div>
+    </div>
 </body>
 </html>
