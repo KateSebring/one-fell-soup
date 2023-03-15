@@ -7,9 +7,11 @@
     <title>Menu | One Fell Soup</title>
 
     <style>
-
+        /*
+            desktop flexbox:
+            
+        */
         body {
-            max-width: max-content;
             margin: auto;
         }
 
@@ -19,46 +21,96 @@
             align-items: center;
             flex-flow: column wrap;
         }
-        .soup-item {
-            width: 150px;
-            height: 150px;
+
+        ul {
             background-color: bisque;
-            border: 2px darkgoldenrod solid;
-            flex-grow: 1;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            width: 200px;
+            display: inline;
+            text-align: center;
+        }
+
+        .soup-item {
+            width: 100%;
+            background-color: bisque;
         }
 
         .soup-grid {
             display: flex;
-            flex-flow: row wrap;
+            flex-flow: column nowrap;
+            margin:auto;
             justify-content: space-evenly;
             gap: 50px;
             align-items: center;
-            width: 70vw;
-            height: 300px;
-            border: 2px darkgoldenrod solid;
+            border: 2px solid black;
+            width:50vw;
         }
+        
+
+        footer {
+            background-color: rgb(229, 206, 162);
+        }
+
+
+        @media all and (min-width:650px) {
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+        }
+
+        .soup-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin:auto;
+            align-items: center;
+            border: 2px solid black;
+            width:80vw;
+        }
+
+        .soup-item {
+            background-color: rgb(152, 196, 152);
+        }
+    }
     </style>
 </head>
 <body>
     <header>
-        
         <!-- place logo to left and title/nav bar to right?-->
-        <img src="logo_placeholder.png" >
-        <h1>One Fell Soup</h1>
-        <ul>
-            <li>Home</li>
-            <li>Menu</li>
-            <li>Shopping Cart</li>
-        </ul>
+        <div>
+            <img src="logo_placeholder.png" class="logo">
+        </div>
+        <div>
+            <h1>One Fell Soup</h1>
+            <ul>
+                <li>Home</li>
+                <li>Menu</li>
+                <li>Shopping Cart</li>
+            </ul>
+        </div>
     </header>
 
-    <h2>Menu</h1>
+    <h2>Menu</h2>
 
     <div class="soup-grid">
-        <div class="soup-item"></div>
-        <div class="soup-item"></div>
-        <div class="soup-item"></div>
-        <div class="soup-item"></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
     </div>
+
+    <footer>
+        Copyright Kate Sebring, 2023. Images from Pexels.
+        <!-- set up credits for images here -->
+    </footer>
 </body>
 </html>
