@@ -7,24 +7,62 @@
     <title>One Fell Soup</title>
 
     <style>
+        body {
+            margin:0;
+            padding:0;
+        }
+        .navbar {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+            background-color: bisque;
+            width:100%;
+            padding:1em;
+            box-sizing:border-box;
+        }
+
+        #logo {
+            font-size: 20px;
+        }
+
+        ul {
+            display: flex;
+            flex-flow: row wrap;
+            list-style-type: none;
+            justify-content: center;
+        }
+
+        li {
+            width: 200px;
+            display: inline;
+            text-align: center;
+        }
+
         #homePageSoup {
             width: 75%;
         }
 
-        body {
-            margin: auto;
+        @media all and (min-width:650px) {
+        .navbar {
+            flex-flow: row nowrap;
+            gap: 1em;
         }
+    }
     </style>
 </head>
 <body>
-
-    <img src="logo_placeholder.png" >
-    <h1>One Fell Soup</h1>
-    <ul>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Shopping Cart</li>
-    </ul>
+    <header>
+        <nav class="navbar">
+            <h1>One Fell Soup</h1>
+            <ul>
+                <li>Home</li>
+                <li>Menu</li>
+                <li>Shopping Cart</li>
+            </ul>
+        </nav>
+    </header>
 
     <p>This is a test page.</p>
 
