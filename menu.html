@@ -5,99 +5,228 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | One Fell Soup</title>
+    <link href="hamburgers.css" rel="stylesheet">
 
     <style>
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-flow: column wrap;
-        }
-
-        ul {
-            background-color: bisque;
-            list-style-type: none;
+        * {
             margin: 0;
             padding: 0;
         }
-
-        li {
-            width: 200px;
-            display: inline;
-            text-align: center;
-        }
-
-        .soup-item {
-            width: 100%;
+        body {
+            
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             background-color: bisque;
         }
 
-        .soup-grid {
+        nav {
             display: flex;
-            flex-flow: column nowrap;
-            margin:auto;
-            justify-content: space-evenly;
-            gap: 50px;
+            flex-flow: row wrap;
+            justify-content: center;
             align-items: center;
-            border: 2px solid black;
-            width:50vw;
+            background-color: bisque;
+        }
+
+        .nav-item {
+            display: none;
+        }
+
+        h1 {
+            font-size: 2em;
+        }
+
+        h2 {
+            background-color: rgb(165, 140, 108);
+            text-align: center;
+            /* padding:1em; */
+            font-size: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .soup-grid {
+            margin: auto;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            max-width:80vw;
+            gap: 1em;
+        }
+
+        .soup-item {
+            max-width: 100%;
+            text-align: center;
         }
         
 
         footer {
             background-color: rgb(229, 206, 162);
+            margin-top:1em;
+            padding: 1em;
+            text-align: center;
         }
 
 
-        @media all and (min-width:650px) {
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-flow: row nowrap;
+        @media screen and (min-width: 554px) {
+            .soup-grid {
+                max-width: 90vw;
+            }
+
+            .soup-item {
+                max-width: 40%;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            nav {
+                gap: 1.5em;
+                padding: 15px 0 15px 0;
+            }
+
+            .nav-item {
+                display: inline-block;
+                font-size: 1.4em;
+                font-weight: 700;
+            }
         }
 
-        .soup-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            margin:auto;
-            align-items: center;
-            border: 2px solid black;
-            width:80vw;
-        }
+        @media screen and (min-width: 1000px) {
+            h2 {
+                font-size: 3em;
+                margin-bottom: 1em;
+            }
 
-        .soup-item {
-            background-color: rgb(152, 196, 152);
+            .soup-grid {
+                gap:3em;
+            }
+
+            .soup-item {
+                max-width: 20%;
+            }
         }
-    }
     </style>
 </head>
 <body>
-    <header>
-        <!-- place logo to left and title/nav bar to right?-->
-        <div>
-            <img src="logo_placeholder.png" class="logo">
-        </div>
-        <div>
-            <h1>One Fell Soup</h1>
-            <ul>
-                <li>Home</li>
-                <li>Menu</li>
-                <li>Shopping Cart</li>
-            </ul>
-        </div>
-    </header>
+    <!-- <header>
+        <img src="logo_placeholder.png">
+    </header> -->
 
-    <h2>Menu</h2>
+    <nav>
+        <h1>One Fell Soup</h1>
+        <button class="hamburger" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>  
 
+        <div class="nav-item">Home</div>
+        <div class="nav-item">Menu</div>
+        <div class="nav-item">Shopping Cart</div>
+    </nav>
+
+    <!-- divider here -->
+
+    <h2>Our Menu</h2>
+
+    <!-- make php iterate the individual menu items-->
     <div class="soup-grid">
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
-        <div class="soup-item"><img src="soup-1.jpeg" style="width:100%"><p>Chicken Noodle Soup</p></div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
+        <div class="soup-item">
+            <img src="soup-1.jpeg" style="width:100%">
+            <p>
+                Chicken Noodle Soup<br>
+                $0.00
+                <!--GF/DF/allergy notices-->
+            </p>
+        </div>
     </div>
 
     <footer>
