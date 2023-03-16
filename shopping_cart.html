@@ -4,21 +4,68 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
+    <title>Shopping Cart | One Fell Soup</title>
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+
+        ul {
+            background-color: bisque;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            width: 200px;
+            display: inline;
+            text-align: center;
+        }
+
+        .customer-products {
+            background-color: aliceblue;
+            width: 100%;
+        }
+
+        .product-img {
+            width: 70%;
+            margin:auto;
+        }
+
+        @media all and (min-width:650px) {
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: row nowrap;
+        }
+    }
+    </style>
 </head>
 <body>
-    <img src="logo_placeholder.png" >
-    <h1>One Fell Soup</h1>
-    <ul>
-        <li>Home</li>
-        <li>Menu</li>
-        <li>Shopping Cart</li>
-    </ul>
+    <header>
+        <img src="logo_placeholder.png" >
+        <h1>One Fell Soup</h1>
+        <ul>
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Shopping Cart</li>
+        </ul>
+    </header>
 
     <h2>Your Items</h2>
 
-    <div class="products">
-        <p><img src="soup-1.jpeg" style="width:50%;"/></p>
+    <div class="customer-products">
+        <p><img src="soup-1.jpeg" class="product-img"/></p>
         <p><b>[Soup name]</b></p>
         <!-- this will update based on chosen customizations-->
         <p>No customizations</p>
