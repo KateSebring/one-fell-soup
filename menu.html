@@ -6,34 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | One Fell Soup</title>
     <link href="css/hamburgers.css" rel="stylesheet">
+    <link href="css/universal_settings.css" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            background-color: bisque;
-        }
-
-        nav {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            align-items: center;
-            background-color: bisque;
-        }
-
-        .nav-item {
-            display: none;
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-
         h2 {
             background-color: rgb(165, 140, 108);
             text-align: center;
@@ -57,15 +32,6 @@
             text-align: center;
         }
         
-
-        footer {
-            background-color: rgb(229, 206, 162);
-            margin-top:1em;
-            padding: 1em;
-            text-align: center;
-        }
-
-
         @media screen and (min-width: 554px) {
             .soup-grid {
                 width: 90vw;
@@ -75,25 +41,11 @@
                 width: 40%;
             }
 
-            .hamburger {
-                display: none;
-            }
-
-            nav {
-                gap: 1.5em;
-                padding: 15px 0 15px 0;
-            }
-
-            .nav-item {
-                display: inline-block;
-                font-size: 1.4em;
-                font-weight: 700;
-            }
         }
 
         @media screen and (min-width: 1000px) {
             h2 {
-                font-size: 3em;
+                font-size: 2.7em;
                 margin-bottom: 1em;
             }
 
@@ -121,9 +73,13 @@
             </span>
         </button>  
 
-        <div class="nav-item">Home</div>
-        <div class="nav-item">Menu</div>
-        <div class="nav-item">Shopping Cart</div>
+        <div></div>
+        <div></div>
+
+
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="menu.html">Menu</a></div>
+        <div class="nav-item"><a href="shopping_cart.html">Shopping Cart (0)</a></div>
     </nav>
 
     <!-- divider here -->
