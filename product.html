@@ -4,9 +4,73 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/universal_settings.css" rel="stylesheet">
     <title>Product Name | One Fell Soup</title>
+
+    <style>
+        main {
+            margin-top: 1rem;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .soup-img {
+            width: 80%;
+        }
+
+        #product-description {
+            padding:0.5em;
+        }
+
+        @media screen and (min-width: 700px) {
+            main {
+                flex-flow: row wrap;
+            }
+            
+            .soup-img {
+                width:50%;
+            }
+
+            #product-description {
+            padding:0;
+        }
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- NAVBAR -->
+    <nav>
+        <h1>One Fell Soup</h1>
+        <button class="hamburger" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>  
+
+        <div></div>
+        <div></div>
+
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="menu.html">Menu</a></div>
+        <div class="nav-item"><a href="shopping_cart.html">Shopping Cart (0)</a></div>
+    </nav>
+
+    <!-- CONTENT -->
+
+    <main>
+        <img src="img/soup-1.jpeg" class="soup-img">
+
+        <h2>[Product Name]</h2>
+
+        <p id="product-description">This is a paragraph with details about the product. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+        <p><i>Details about food sensitivies; gluten free, dairy free, vegetarian, etc. Maybe make this tags/buttons instead?</i></p>
+
+        <button>Add to Cart</button>
+    </main>
 </body>
 </html>
