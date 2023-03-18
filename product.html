@@ -8,22 +8,46 @@
     <title>Product Name | One Fell Soup</title>
 
     <style>
-        main {
-            margin-top: 1rem;
+        .main-product-info {
+            margin: auto;
+            margin-top: 3rem;
             display: flex;
             flex-flow: column wrap;
             justify-content: center;
             align-items: center;
             text-align: center;
             gap: 1rem;
+            padding: 2rem;
+            background-color: #bba589;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
         }
 
         .soup-img {
-            width: 80%;
+            width: 100%;
         }
 
-        #product-description {
-            padding:0.5em;
+        h1, h2, h3 {
+            color: #242124;
+        }
+
+        p {
+            margin:1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        .nutrition-info {
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            gap:2rem;
+            margin-top: 3rem;
+            text-align: center;
         }
 
         @media screen and (min-width: 700px) {
@@ -32,12 +56,30 @@
             }
             
             .soup-img {
-                width:50%;
+                width:100%;
             }
 
-            #product-description {
-            padding:0;
+            .main-product-info {
+                display: grid;
+                grid-template-columns: repeat(2, 4fr);
+                grid-template-rows: 1fr;
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                width:70%;
+            }
+
+            .div1 { 
+                grid-area: 1 / 1 / 2 / 2; 
+            }
+            .div2 { 
+                grid-area: 1 / 2 / 2 / 3;
+            }
         }
+
+        @media screen and (min-width: 1300px) {
+            .main-product-info {
+                grid-column-gap: 75px;
+            }
         }
     </style>
 </head>
@@ -62,15 +104,35 @@
     <!-- CONTENT -->
 
     <main>
-        <img src="img/soup-1.jpeg" class="soup-img">
+        <!-- maybe split these into two columsn if neccessary-->
+        <div class="main-product-info">
+            <div class="div1"> 
+                <h2>[Product Name]</h2>
+                <img src="img/soup-1.jpeg" class="soup-img">
+            </div>
+            <div class="div2"> 
+                <p><b>Calorie information</b></p>
+                
+                <p id="product-description">This is a paragraph with details about the product.</p>
 
-        <h2>[Product Name]</h2>
+                <p><i>Details about food sensitivies; gluten free, dairy free, vegetarian, etc. Maybe make this tags/buttons instead?</i></p>
 
-        <p id="product-description">This is a paragraph with details about the product. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
 
-        <p><i>Details about food sensitivies; gluten free, dairy free, vegetarian, etc. Maybe make this tags/buttons instead?</i></p>
+        <div class="nutrition-info">
+            <div id="ingredients">
+                <h3>Ingredients</h3>
+                <p>Noodles, chicken, celery, chicken broth</p>
+            </div>
 
-        <button>Add to Cart</button>
+            <div id="allergens">
+                <h3>Allergen Information</h3>
+                <p>This product contains <strong>eggs</strong>, <strong>milk</strong>, and <strong>gluten.</strong></p>
+            </div>
+        </div>
+        
     </main>
 </body>
 </html>

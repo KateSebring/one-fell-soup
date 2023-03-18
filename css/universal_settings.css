@@ -15,15 +15,21 @@ nav {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    background-color: rgb(187, 165, 137);
+    background-color: #bba589;
 }
 
 .nav-item {
     display: none;
 }
 
-.nav-item:hover {
-    color: rgb(54, 54, 54);
+.nav-item > a {
+    color: #242124;
+    text-decoration: none;
+}
+
+.nav-item > a:hover {
+    color: #363636;
+    text-decoration: underline;
 }
 
 h1 {
