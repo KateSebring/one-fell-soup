@@ -1,3 +1,7 @@
+<?php
+include("header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,22 +102,6 @@
 </head>
 
 <body>
-    <nav>
-        <h1>One Fell Soup</h1>
-        <button class="hamburger" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>  
-
-        <div></div>
-        <div></div>
-
-        <div class="nav-item"><a href="homepage.php">Home</a></div>
-        <div class="nav-item"><a href="menu.php">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (0)</a></div>
-    </nav>
-
     <div class="home-page-welcome">
         <h2>Need a warm bowl of comfort?</h2>
 
