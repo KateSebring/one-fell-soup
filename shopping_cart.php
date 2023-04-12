@@ -93,9 +93,9 @@
         <div></div>
         <div></div>
 
-        <div class="nav-item"><a href="index.html">Home</a></div>
-        <div class="nav-item"><a href="menu.html">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.html">Shopping Cart (0)</a></div>
+        <div class="nav-item"><a href="homepage.php">Home</a></div>
+        <div class="nav-item"><a href="menu.php">Menu</a></div>
+        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (0)</a></div>
     </nav>
 
     <h2>Your Items</h2>
