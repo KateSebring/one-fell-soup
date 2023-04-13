@@ -141,7 +141,7 @@ include("header.php");
     <div class="soup-grid">
     <?php
     try {
-        $selectItem = "SELECT * FROM soup_products";
+        $selectItem = "SELECT * FROM soup_products ORDER BY productId DESC";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     

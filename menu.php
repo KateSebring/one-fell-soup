@@ -63,13 +63,16 @@ include("header.php");
     </style>
 </head>
 <body>
+
+    <!-- https://stackoverflow.com/questions/3764221/filter-results-by-product-type-and-sort-list-by-price-php-sql -->
     <!-- CONTENT -->
     <h2>Our Menu</h2>
     <!-- make php iterate the individual menu items-->
     <div class="soup-grid">
     <?php
     try {
-        $selectItem = "SELECT * FROM soup_products";
+        $order = "productPrice";
+        $selectItem = "SELECT * FROM soup_products ORDER BY productPrice";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     

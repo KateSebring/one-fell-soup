@@ -37,6 +37,7 @@
             align-items: center;
             text-align: center;
             gap:1rem;
+            padding-top: 1rem;
         }
 
         @media screen and (min-width: 620px) {
@@ -162,21 +163,20 @@
                 </p>
             </div>
         </div>
-
-        <div class="ordering-totals">
-            <label for="pickup-method">Pickup Method:</label> 
-            <select name="pickup-method" id="pickup-method">
-                <option value="eat-in">Eat-in</option>
-                <option value="carry-out">Carry Out</option>
-            </select>
-
-            <p>Subtotal: $0.00<br>
-            (Tax calculated at checkout)</p>
-            
-            <button>Check Out</button>
-        </div>
     </div>
-    
+
+    <div class="ordering-totals">
+        <label for="pickup-method">Pickup Method:</label> 
+        <select name="pickup-method" id="pickup-method">
+            <option value="eat-in">Eat-in</option>
+            <option value="carry-out">Carry Out</option>
+        </select>
+
+        <p>Subtotal: $0.00<br>
+        (Tax calculated at checkout)</p>
+        
+        <button>Check Out</button>
+    </div>
 
     <footer>
         Copyright Kate Sebring, 2023. Images from Pexels.

@@ -9,7 +9,7 @@ include("header.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/universal_settings.css" rel="stylesheet">
-    <title>Product Name | One Fell Soup</title>
+    <title>One Fell Soup</title>
 
     <style>
         .main-product-info {
@@ -20,7 +20,6 @@ include("header.php");
             justify-content: center;
             align-items: center;
             text-align: center;
-            gap: 1rem;
             padding: 2rem;
             background-color: #bba589;
         }
@@ -31,6 +30,7 @@ include("header.php");
 
         .soup-img {
             width: 100%;
+            padding-bottom:1rem;
         }
 
         h1, h2, h3 {
@@ -38,7 +38,7 @@ include("header.php");
         }
 
         p {
-            margin:1rem;
+            margin-top:1rem;
         }
 
         h3 {
@@ -60,26 +60,33 @@ include("header.php");
             }
             
             .soup-img {
-                width:100%;
+                padding-bottom:0;
             }
 
             .main-product-info {
                 display: grid;
                 grid-template-columns: repeat(2, 4fr);
                 grid-template-rows: 1fr;
-                grid-column-gap: 0px;
+                grid-column-gap: 40px;
                 grid-row-gap: 0px;
+                text-align: left;
                 width:70%;
             }
 
-            .div1 { 
+            .productImage { 
                 grid-area: 1 / 1 / 2 / 2; 
             }
-            .div2 { 
+            .productInfo { 
                 grid-area: 1 / 2 / 2 / 3;
             }
         }
 
+        @media screen and (min-width: 1200px) {
+            .main-product-info {
+                width:60%;
+            }
+        }
+        
         @media screen and (min-width: 1300px) {
             .main-product-info {
                 grid-column-gap: 75px;
@@ -89,39 +96,82 @@ include("header.php");
 </head>
 <body>
     <!-- CONTENT -->
-
     <main>
         <!-- maybe split these into two columsn if neccessary-->
         <div class="main-product-info">
-            <div class="div1"> 
-                <img src="img/soup-1.jpeg" class="soup-img">
-            </div>
-            <div class="div2"> 
-                <h2>[Product Name]</h2>
-                
-                <p><b>Calorie information</b></p>
-                
-                <p id="product-description">This is a paragraph with details about the product.</p>
+        <?php
+            try {
+                $selectItem = "SELECT * FROM soup_products WHERE productId = 4";
+                $stmt = $conn->prepare($selectItem);
+                $stmt->execute();
+            
+                $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                foreach($stmt->fetchAll() as $listItem) {
+                    $productName = $listItem['productName'];
+                    $calories = $listItem['calories'];
+                    $productImg = $listItem['productImg'];
+                    $productPrice = $listItem['productPrice'];   
+                    $productDescription = $listItem['productDescription'];                 
 
-                <p><i>Details about food sensitivies; gluten free, dairy free, vegetarian, etc. Maybe make this tags/buttons instead?</i></p>
-
+                    echo "<div class='productImage'><img src='$productImg' class='soup-img'></div>";
+                    echo "<div class='productInfo'><h2>$productName</h2>";
+                    echo "<p><b>$calories calories per serving</b></p>";
+                    echo "<p id='product-description'>$productDescription</p>";
+                }
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        ?>
                 <button>Add to Cart</button>
-            </div>
-        </div>
+            </div> <!-- end div 2 -->
+        </div> <!-- end div 1 -->
 
         <div class="nutrition-info">
             <div id="ingredients">
                 <h3>Ingredients</h3>
-                <p>Noodles, chicken, celery, chicken broth</p>
+
+                <?php
+                try {
+                    $selectItem = "SELECT * FROM soup_products WHERE productId = 4";
+                    $stmt = $conn->prepare($selectItem);
+                    $stmt->execute();
+                
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    foreach($stmt->fetchAll() as $listItem) {
+                        $ingredients = $listItem['ingredients'];
+
+                        echo "<p>$ingredients</p>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
             </div>
 
             <div id="allergens">
                 <h3>Allergen Information</h3>
-                <strong>Please note: This contains possible common allergens. Please check the ingredients to ensure your own safety or ask your server.</strong>
-                <p>This product contains eggs, milk, and gluten.</p>
+                <strong>Please ask your server if you have any allergies not listed here.</strong>
+                <?php
+                try {
+                    $selectItem = "SELECT * FROM soup_products WHERE productId = 4";
+                    $stmt = $conn->prepare($selectItem);
+                    $stmt->execute();
+                
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    foreach($stmt->fetchAll() as $listItem) {
+                        $allergies = $listItem['allergies'];
+                        echo "<p>This product contains $allergies.</p>";
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: " . $e->getMessage();
+                }
+                ?>
             </div>
         </div>
-        
+    <footer>
+        Copyright Kate Sebring, 2023. Images from Pexels.
+        <!-- set up credits for images here -->
+    </footer>
     </main>
 </body>
 </html>
