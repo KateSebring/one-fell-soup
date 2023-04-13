@@ -1,3 +1,7 @@
+<?php
+include("header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,96 +63,35 @@
     </style>
 </head>
 <body>
-    <!-- NAVBAR -->
-    <nav>
-        <h1>One Fell Soup</h1>
-        <button class="hamburger" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>  
-
-        <div></div>
-        <div></div>
-
-
-        <div class="nav-item"><a href="homepage.php">Home</a></div>
-        <div class="nav-item"><a href="menu.php">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (0)</a></div>
-    </nav>
-
-    <!-- divider here? -->
-
     <!-- CONTENT -->
     <h2>Our Menu</h2>
-
     <!-- make php iterate the individual menu items-->
     <div class="soup-grid">
-        <div class="soup-item">
-            <a href="product.html">
-                <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-            </a>
-        </div>
-        
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
+    <?php
+    try {
+        $selectItem = "SELECT * FROM soup_products";
+        $stmt = $conn->prepare($selectItem);
+        $stmt->execute();
+    
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach($stmt->fetchAll() as $listItem) {
+            $productName = $listItem['productName'];
+            $calories = $listItem['calories'];
+            $productImg = $listItem['productImg'];
+            $productPrice = $listItem['productPrice'];
+            $webPageLink = $listItem['webPageLink'];
+            echo "<div class='soup-item'><a href='$webPageLink'>";
+            // NEED TO CROP IMAGES
+            echo "<img src='$productImg' style='width:100%'>";
+            echo "<p>$productName<br>$$productPrice</p></a>";
+            echo "</div>";
+        }
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
+    ?>
     </div>
+    <!-- END OF SOUP GRID -->
 
     <footer>
         Copyright Kate Sebring, 2023. Images from Pexels.

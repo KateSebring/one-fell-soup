@@ -108,7 +108,7 @@
                 <!-- this will update based on chosen customizations-->
                 <p>No customizations</p>
 
-                <p><a href="placeholder.html">Edit</a> | <a href="placeholder.html">Remove</a></p>
+                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
 
                 <p>
                     <label for="quantity">Quantity:</label> 
@@ -128,7 +128,7 @@
                 <!-- this will update based on chosen customizations-->
                 <p>No customizations</p>
 
-                <p><a href="placeholder.html">Edit</a> | <a href="placeholder.html">Remove</a></p>
+                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
 
                 <p>
                     <label for="quantity">Quantity:</label> 
@@ -148,7 +148,7 @@
                 <!-- this will update based on chosen customizations-->
                 <p>No customizations</p>
 
-                <p><a href="placeholder.html">Edit</a> | <a href="placeholder.html">Remove</a></p>
+                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
 
                 <p>
                     <label for="quantity">Quantity:</label> 

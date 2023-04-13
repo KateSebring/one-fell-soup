@@ -111,63 +111,57 @@ include("header.php");
     <h3>Customer Favorites</h3>
 
     <div class="soup-grid">
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-        
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
+    <?php
+    try {
+        $selectItem = "SELECT * FROM soup_products";
+        $stmt = $conn->prepare($selectItem);
+        $stmt->execute();
+    
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach($stmt->fetchAll() as $listItem) {
+            $productName = $listItem['productName'];
+            $calories = $listItem['calories'];
+            $productImg = $listItem['productImg'];
+            $productPrice = $listItem['productPrice'];
+            $webPageLink = $listItem['webPageLink'];
+            echo "<div class='soup-item'><a href='$webPageLink'>";
+            // NEED TO CROP IMAGES
+            echo "<img src='$productImg' style='width:100%'>";
+            echo "<p>$productName<br>$$productPrice</p></a>";
+            echo "</div>";
+        }
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
+    ?>
     </div>
 
     <h3 id="new-products">New Products</h3>
 
     <div class="soup-grid">
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-        
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
-
-        <div class="soup-item">
-            <img src="img/soup-1.jpeg" style="width:100%">
-            <p>
-                Chicken Noodle Soup<br>
-                $0.00
-                <!--GF/DF/allergy notices-->
-            </p>
-        </div>
+    <?php
+    try {
+        $selectItem = "SELECT * FROM soup_products";
+        $stmt = $conn->prepare($selectItem);
+        $stmt->execute();
+    
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        foreach($stmt->fetchAll() as $listItem) {
+            $productName = $listItem['productName'];
+            $calories = $listItem['calories'];
+            $productImg = $listItem['productImg'];
+            $productPrice = $listItem['productPrice'];
+            $webPageLink = $listItem['webPageLink'];
+            echo "<div class='soup-item'><a href='$webPageLink'>";
+            // NEED TO CROP IMAGES
+            echo "<img src='$productImg' style='width:100%'>";
+            echo "<p>$productName<br>$$productPrice</p></a>";
+            echo "</div>";
+        }
+    } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
+    ?>
     </div>
 
     <footer>
