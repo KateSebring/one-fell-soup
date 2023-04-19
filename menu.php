@@ -1,5 +1,7 @@
 <?php
+session_start();
 include("header.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -63,16 +65,16 @@ include("header.php");
     </style>
 </head>
 <body>
-
-    <!-- https://stackoverflow.com/questions/3764221/filter-results-by-product-type-and-sort-list-by-price-php-sql -->
     <!-- CONTENT -->
     <h2>Our Menu</h2>
     <!-- make php iterate the individual menu items-->
     <div class="soup-grid">
     <?php
     try {
+        // use this variable for sorting in phase 3
         $order = "productPrice";
-        $selectItem = "SELECT * FROM soup_products ORDER BY productPrice";
+        
+        $selectItem = "SELECT * FROM soup_products ORDER BY $order";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     
@@ -84,7 +86,6 @@ include("header.php");
             $productPrice = $listItem['productPrice'];
             $webPageLink = $listItem['webPageLink'];
             echo "<div class='soup-item'><a href='$webPageLink'>";
-            // NEED TO CROP IMAGES
             echo "<img src='$productImg' style='width:100%'>";
             echo "<p>$productName<br>$$productPrice</p></a>";
             echo "</div>";
@@ -102,3 +103,6 @@ include("header.php");
     </footer>
 </body>
 </html>
+
+<!-- ref for sorting products -->    
+<!-- https://stackoverflow.com/questions/3764221/filter-results-by-product-type-and-sort-list-by-price-php-sql -->

@@ -1,3 +1,8 @@
+<?php
+session_start();
+include("header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,84 +88,41 @@
     </style>
 </head>
 <body>
-    <nav>
-        <h1>One Fell Soup</h1>
-        <button class="hamburger" type="button">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>  
-
-        <div></div>
-        <div></div>
-
-        <div class="nav-item"><a href="homepage.php">Home</a></div>
-        <div class="nav-item"><a href="menu.php">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (0)</a></div>
-    </nav>
-
     <h2>Your Items</h2>
     <div class="customer-container">
         <div class="customer-products">
-            <!-- wrap each product in an "individual-product" div? -->
-            <div><img src="img/soup-1.jpeg" class="product-img"/></div>
-            <div id="order-details">
-                <p><b>[Soup name]</b></p>
-                <!-- this will update based on chosen customizations-->
-                <p>No customizations</p>
+        <?php
+        $displayInfo = "";
+            $productName = "";
+            $productImg = "";
+            $productPrice = "";
+            // iterate through shopping_cart table here
+            // note to self: this is all displaying correctly
+            try {
+                $selectItem = "SELECT * FROM shopping_cart";
+                if (empty($selectItem)) {
+                    $displayInfo = "No products yet.";
+                } else {
+                    $stmt = $conn->prepare($selectItem);
+                    $stmt->execute();
 
-                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    foreach($stmt->fetchAll() as $listItem) {
+                        $productName = $listItem['productName'];
+                        $productPrice = $listItem['productPrice'];
+                        $productImg = $listItem['productImg'];
+                    }
 
-                <p>
-                    <label for="quantity">Quantity:</label> 
-                    <select name ="quantity" id="quantity">
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                    </select>
-                </p>
-            </div>
-
-            <div><img src="img/soup-1.jpeg" class="product-img"/></div>
-            <div id="order-details">
-                <p><b>[Soup name]</b></p>
-                <!-- this will update based on chosen customizations-->
-                <p>No customizations</p>
-
-                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
-
-                <p>
-                    <label for="quantity">Quantity:</label> 
-                    <select name ="quantity" id="quantity">
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                    </select>
-                </p>
-            </div>
-
-            <div><img src="img/soup-1.jpeg" class="product-img"/></div>
-            <div id="order-details">
-                <p><b>[Soup name]</b></p>
-                <!-- this will update based on chosen customizations-->
-                <p>No customizations</p>
-
-                <p><a href="placeholder.php">Edit</a> | <a href="placeholder.php">Remove</a></p>
-
-                <p>
-                    <label for="quantity">Quantity:</label> 
-                    <select name ="quantity" id="quantity">
-                        <option value="one">1</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5</option>
-                    </select>
-                </p>
+                    $displayInfo = "<div><img src='$productImg' class='product-img'/></div>
+                    <p><b>$productName</b> - $$productPrice</p>
+                    <div id='order-details'>
+                    <p><a href='placeholder.php'>Remove</a></p>";
+                }
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            echo $displayInfo;
+        ?>
             </div>
         </div>
     </div>

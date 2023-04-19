@@ -11,7 +11,7 @@ try {
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
-
+$cartTotal = 0;
 ?>
 
 <nav>
@@ -27,5 +27,5 @@ try {
 
         <div class="nav-item"><a href="homepage.php">Home</a></div>
         <div class="nav-item"><a href="menu.php">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (0)</a></div>
+        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (<?php echo $cartTotal?>)</a></div>
     </nav>

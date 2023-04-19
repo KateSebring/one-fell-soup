@@ -14,6 +14,14 @@ ingredients VARCHAR (1000),
 productImg VARCHAR(255)
 );
 
+DROP TABLE IF EXISTS shopping_cart;
+CREATE TABLE shopping_cart(
+productID INT AUTO_INCREMENT PRIMARY KEY,
+productName VARCHAR(255),
+productPrice DECIMAL(13,2),
+productImg VARCHAR(255)
+);
+
 INSERT INTO soup_products (productName, productDescription, calories, productPrice, webPageLink, allergies, ingredients, productImg)
 VALUES
 ("Tomato Soup", "A delicious bowl of comfort.", 320, 2.50, "tomato.php", "milk", "Tomatoes, garlic, milk, olive oil, sugar", "img/tomato_soup.jpg");
@@ -31,3 +39,4 @@ VALUES
 ("Peanut Soup", "A delicious bowl of comfort.", 320, 2.50, "peanut.php", "peanuts", "Peanuts, sweet potato, ribs, kale, tomato paste", "img/peanut_soup.jpg");
 
 SELECT * FROM soup_products;
+SELECT * FROM shopping_cart;

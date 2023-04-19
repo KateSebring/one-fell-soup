@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 ?>
 
@@ -98,30 +99,42 @@ include("header.php");
     <main>
         <!-- maybe split these into two columsn if neccessary-->
         <div class="main-product-info">
-        <?php
-            try {
-                $selectItem = "SELECT * FROM soup_products WHERE productId = 1";
-                $stmt = $conn->prepare($selectItem);
-                $stmt->execute();
-            
-                $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                foreach($stmt->fetchAll() as $listItem) {
-                    $productName = $listItem['productName'];
-                    $calories = $listItem['calories'];
-                    $productImg = $listItem['productImg'];
-                    $productPrice = $listItem['productPrice'];   
-                    $productDescription = $listItem['productDescription'];                 
+            <?php
+                try {
+                    $selectItem = "SELECT * FROM soup_products WHERE productId = 1";
+                    $stmt = $conn->prepare($selectItem);
+                    $stmt->execute();
+                
+                    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                    foreach($stmt->fetchAll() as $listItem) {
+                        $productName = $listItem['productName'];
+                        $calories = $listItem['calories'];
+                        $productImg = $listItem['productImg'];
+                        $productPrice = $listItem['productPrice'];   
+                        $productDescription = $listItem['productDescription'];                 
 
-                    echo "<div class='productImage'><img src='$productImg' class='soup-img'></div>";
-                    echo "<div class='productInfo'><h2>$productName</h2>";
-                    echo "<p><b>$calories calories per serving</b></p>";
-                    echo "<p id='product-description'>$productDescription</p>";
+                        echo "<div class='productImage'><img src='$productImg' class='soup-img'></div>";
+                        echo "<div class='productInfo'><h2>$productName</h2>";
+                        echo "<p><b>$calories calories per serving</b></p>";
+                        echo "<p id='product-description'>$productDescription</p>";
+                        if(isset($_POST['submit']))
+                        {
+                            // replace this with join - use product id to fetch data from products table
+                            $insert = "INSERT INTO shopping_cart (productName, productPrice, productImg) VALUES ('$productName', '$productPrice', '$productImg')";
+                            $conn->exec($insert);
+                        }
+                    }
+                } catch(PDOException $e) {
+                    echo "Error: " . $e->getMessage();
                 }
-            } catch(PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
-        ?>
-                <button>Add to Cart</button>
+            ?>
+            <!-- when user hits submit
+            it inserts into the shopping cart 
+            the productName, productId, productImg, and productPrice 
+            -->
+            <form action="tomato.php" method="post">
+                <input type="submit" name="submit">
+            </form>
             </div> <!-- end div 2 -->
         </div> <!-- end div 1 -->
 
