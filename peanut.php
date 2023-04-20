@@ -119,11 +119,20 @@ include("header.php");
                     echo "<p><b>$calories calories per serving</b></p>";
                     echo "<p id='product-description'>$productDescription</p>";
                 }
+
+                if(isset($_POST['submit']))
+                {
+                    $insert = "INSERT INTO shopping_cart (productName, productPrice, productImg) VALUES ('$productName', '$productPrice', '$productImg')";
+                    $conn->exec($insert);
+                } 
+
             } catch(PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
         ?>
-                <button>Add to Cart</button>
+            <form action="peanut.php" method="post">
+                <input type="submit" name="submit">
+            </form>
             </div> <!-- end div 2 -->
         </div> <!-- end div 1 -->
 

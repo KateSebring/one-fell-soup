@@ -1,6 +1,15 @@
 <?php
 session_start();
 include("header.php");
+
+$displayInfo = "";
+function deleteItemFromCart($conn, $cartID) {
+    $delete = "DELETE FROM shopping_cart WHERE cartID=:cartID";
+    $stmt = $conn->prepare($delete);
+    $stmt->bindParam(':cartID', $cartID);
+    $stmt->execute();
+} 
+
 ?>
 
 <!DOCTYPE html>
@@ -92,12 +101,13 @@ include("header.php");
     <div class="customer-container">
         <div class="customer-products">
         <?php
-        $displayInfo = "";
-            $productName = "";
-            $productImg = "";
-            $productPrice = "";
             // iterate through shopping_cart table here
             // note to self: this is all displaying correctly
+
+            if (isset($_GET['deletedItemId'])) {
+                deleteItemFromCart($conn, $_GET['deletedItemId']);
+            }
+
             try {
                 $selectItem = "SELECT * FROM shopping_cart";
                 if (empty($selectItem)) {
@@ -105,41 +115,48 @@ include("header.php");
                 } else {
                     $stmt = $conn->prepare($selectItem);
                     $stmt->execute();
-
                     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                    foreach($stmt->fetchAll() as $listItem) {
-                        $productName = $listItem['productName'];
-                        $productPrice = $listItem['productPrice'];
-                        $productImg = $listItem['productImg'];
-                    }
 
-                    $displayInfo = "<div><img src='$productImg' class='product-img'/></div>
-                    <p><b>$productName</b> - $$productPrice</p>
-                    <div id='order-details'>
-                    <p><a href='placeholder.php'>Remove</a></p>";
+                    if ($stmt->rowCount() == 0) {
+                        echo "<b>No items in cart.</b>";
+                    } else {
+                        foreach($stmt->fetchAll() as $listItem) {
+                            $cartID = $listItem['cartID'];
+                            $productName = $listItem['productName'];
+                            $productPrice = $listItem['productPrice'];
+                            $productImg = $listItem['productImg'];
+                            $quantity = $listItem['quantity'];
+        
+                            echo "<div><img src='$productImg' class='product-img'/></div>
+                            <div id='order-details'>
+                            <p><b>$productName</b> - $$productPrice</p>
+                            <a href='shopping_cart.php?deletedItemId=$cartID'>Delete</a>
+                            </div>";
+                        }
+                    }
                 }
             } catch(PDOException $e) {
                 echo "Error: " . $e->getMessage();
-            }
-            echo $displayInfo;
-        ?>
+            }    
+        ?>  
+                
             </div>
         </div>
+    
+
+        <div class="ordering-totals">
+            <label for="pickup-method">Pickup Method:</label> 
+            <select name="pickup-method" id="pickup-method">
+                <option value="eat-in">Eat-in</option>
+                <option value="carry-out">Carry Out</option>
+            </select>
+
+            <p>Subtotal: $0.00<br>
+            (Tax calculated at checkout)</p>
+            
+            <button>Check Out</button>
+        </div>
     </div>
-
-    <div class="ordering-totals">
-        <label for="pickup-method">Pickup Method:</label> 
-        <select name="pickup-method" id="pickup-method">
-            <option value="eat-in">Eat-in</option>
-            <option value="carry-out">Carry Out</option>
-        </select>
-
-        <p>Subtotal: $0.00<br>
-        (Tax calculated at checkout)</p>
-        
-        <button>Check Out</button>
-    </div>
-
     <footer>
         Copyright Kate Sebring, 2023. Images from Pexels.
         <!-- set up credits for images here -->

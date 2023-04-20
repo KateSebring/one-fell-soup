@@ -16,10 +16,11 @@ productImg VARCHAR(255)
 
 DROP TABLE IF EXISTS shopping_cart;
 CREATE TABLE shopping_cart(
-productID INT AUTO_INCREMENT PRIMARY KEY,
+cartID INT AUTO_INCREMENT PRIMARY KEY,
 productName VARCHAR(255),
 productPrice DECIMAL(13,2),
-productImg VARCHAR(255)
+productImg VARCHAR(255),
+quantity INT
 );
 
 INSERT INTO soup_products (productName, productDescription, calories, productPrice, webPageLink, allergies, ingredients, productImg)
