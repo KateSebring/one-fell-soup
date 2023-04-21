@@ -27,5 +27,5 @@ $cartTotal = 0;
 
         <div class="nav-item"><a href="homepage.php">Home</a></div>
         <div class="nav-item"><a href="menu.php">Menu</a></div>
-        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart (<?php echo $cartTotal?>)</a></div>
+        <div class="nav-item"><a href="shopping_cart.php">Shopping Cart</a></div>
     </nav>

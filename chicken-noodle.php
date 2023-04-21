@@ -121,8 +121,16 @@ include("header.php");
             } catch(PDOException $e) {
                 echo "Error: " . $e->getMessage();
             }
+
+            if(isset($_POST['submit']))
+            {
+                $insert = "INSERT INTO shopping_cart (productName, productPrice, productImg) VALUES ('$productName', '$productPrice', '$productImg')";
+                $conn->exec($insert);
+            } 
         ?>
-                <button>Add to Cart</button>
+            <form action="chicken-noodle.php" method="post">
+                <input type="submit" name="submit">
+            </form>
             </div> <!-- end div 2 -->
         </div> <!-- end div 1 -->
 
