@@ -21,6 +21,13 @@ include("header.php");
             margin-bottom: 0.5em;
         }
 
+        #sort {
+            display: flex;
+            justify-content: right;
+            padding-right: 2rem;
+            padding-bottom: 2rem;
+        }
+
         .soup-grid {
             margin: auto;
             display: flex;
@@ -67,14 +74,41 @@ include("header.php");
 <body>
     <!-- CONTENT -->
     <h2>Our Menu</h2>
-    <!-- make php iterate the individual menu items-->
+
+    <form action="menu.php" method="post" id="sort">
+        <label for="sort-options">Sort by:&nbsp;</label>
+        <select id="sort-options" name="sort-options">
+            <option value="price-low-to-high">Price low-to-high</option>
+            <option value="price-high-to-low">Price high-to-low</option>
+            <option value="newest">Newest to oldest</option>
+            <option value="name">Name</option>
+        </select>
+        <input type="submit">
+    </form>
+
     <div class="soup-grid">
+
     <?php
+    $order = "ORDER BY productPrice";
+
+    if(isset($_POST['sort-options'])) {
+        $changeOrder = $_POST['sort-options'];
+        if ($changeOrder == "price-low-to-high") {
+            $order = "ORDER BY productPrice";
+        } else if ($changeOrder == "price-high-to-low") {
+            $order = "ORDER BY productPrice DESC";
+        } else if ($changeOrder == "newest") {
+            $order = "ORDER BY productId DESC";
+        } else if ($changeOrder == "name") {
+            $order = "ORDER BY productName";
+        }
+    } else {
+        $changeOrder = "price-low-to-high";
+    }
+
     try {
         // use this variable for sorting in phase 3
-        $order = "productPrice";
-        
-        $selectItem = "SELECT * FROM soup_products ORDER BY $order";
+        $selectItem = "SELECT * FROM soup_products $order";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     
@@ -87,8 +121,7 @@ include("header.php");
             $webPageLink = $listItem['webPageLink'];
             echo "<div class='soup-item'><a href='$webPageLink'>";
             echo "<img src='$productImg' style='width:100%'>";
-            echo "<p>$productName<br>$$productPrice</p></a>";
-            echo "</div>";
+            echo "<p>$productName<br>$$productPrice</p></a></div>";
         }
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();

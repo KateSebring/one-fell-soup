@@ -39,5 +39,13 @@ INSERT INTO soup_products (productName, productDescription, calories, productPri
 VALUES
 ("Peanut Soup", "A delicious bowl of comfort.", 320, 2.50, "peanut.php", "peanuts", "Peanuts, sweet potato, ribs, kale, tomato paste", "img/peanut_soup.jpg");
 
+INSERT INTO soup_products (productName, productDescription, calories, productPrice, webPageLink, allergies, ingredients, productImg)
+VALUES
+("Bisque", "A delicious bowl of comfort.", 400, 3.00, "bisque.php", "shellfish", "Shrimp, heavy cream, half-and-half, butter, green onions, corn, flour", "img/bisque.jpg");
+
+INSERT INTO soup_products (productName, productDescription, calories, productPrice, webPageLink, allergies, ingredients, productImg)
+VALUES
+("Minestroni", "A delicious bowl of comfort.", 540, 6.75, "minestroni.php", "no allergies", "Tomatoes, celery, onion, potatoes, squash, oregano, tyhem, garlic, vegetable broth, elbow pasta, baby spinach", "img/minestroni.jpg");
+
 SELECT * FROM soup_products;
-SELECT * FROM shopping_cart;
+-- SELECT * FROM shopping_cart;
