@@ -113,8 +113,8 @@ include("header.php");
                     $productImg = $listItem['productImg'];
                     $productPrice = $listItem['productPrice'];   
                     $productDescription = $listItem['productDescription'];                 
-
-                    echo "<div class='productImage'><img src='$productImg' class='soup-img'></div>";
+                    $imgAlt = $listItem['imgAlt'];
+                    echo "<div class='productImage'><img src='$productImg' class='soup-img' alt='$imgAlt'></div>";
                     echo "<div class='productInfo'><h2>$productName</h2>";
                     echo "<p><b>$calories calories per serving</b></p>";
                     echo "<p id='product-description'>$productDescription</p>";
