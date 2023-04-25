@@ -126,11 +126,12 @@ function deleteItemFromCart($conn, $cartID) {
                             $productPrice = $listItem['productPrice'];
                             $productImg = $listItem['productImg'];
                             $quantity = $listItem['quantity'];
+                            $imgAlt = $listItem['imgAlt'];
         
-                            echo "<div><img src='$productImg' class='product-img'/></div>
+                            echo "<div><img src='$productImg' class='product-img' alt='$imgAlt'/></div>
                             <div id='order-details'>
                             <p><b>$productName</b> - $$productPrice</p>
-                            <a href='shopping_cart.php?deletedItemId=$cartID'>Delete</a>
+                            <a href='shopping_cart.php?deletedItemId=$cartID'>Remove Item</a>
                             </div>";
                         }
                     }

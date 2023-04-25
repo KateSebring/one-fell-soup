@@ -21,7 +21,8 @@ cartID INT AUTO_INCREMENT PRIMARY KEY,
 productName VARCHAR(255),
 productPrice DECIMAL(13,2),
 productImg VARCHAR(255),
-quantity INT
+quantity INT,
+imgAlt VARCHAR(255)
 );
 
 INSERT INTO soup_products (productName, productDescription, calories, productPrice, webPageLink, allergies, ingredients, productImg, imgAlt)
