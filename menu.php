@@ -83,7 +83,7 @@ include("header.php");
             <option value="newest">Newest to oldest</option>
             <option value="name">Name</option>
         </select>
-        <input type="submit">
+        <input type="submit" value="Submit">
     </form>
 
     <div class="soup-grid">
@@ -107,7 +107,6 @@ include("header.php");
     }
 
     try {
-        // use this variable for sorting in phase 3
         $selectItem = "SELECT * FROM soup_products $order";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
@@ -119,8 +118,9 @@ include("header.php");
             $productImg = $listItem['productImg'];
             $productPrice = $listItem['productPrice'];
             $webPageLink = $listItem['webPageLink'];
+            $imgAlt = $listItem['imgAlt'];
             echo "<div class='soup-item'><a href='$webPageLink'>";
-            echo "<img src='$productImg' style='width:100%'>";
+            echo "<img src='$productImg' style='width:100%' alt='$imgAlt'>";
             echo "<p>$productName<br>$$productPrice</p></a></div>";
         }
     } catch(PDOException $e) {
@@ -136,6 +136,3 @@ include("header.php");
     </footer>
 </body>
 </html>
-
-<!-- ref for sorting products -->    
-<!-- https://stackoverflow.com/questions/3764221/filter-results-by-product-type-and-sort-list-by-price-php-sql -->

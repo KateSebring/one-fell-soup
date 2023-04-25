@@ -137,7 +137,7 @@ include("header.php");
             the productName, productId, productImg, and productPrice 
             -->
             <form action="tomato.php" method="post">
-                <input type="submit" name="submit">
+                <input type="submit" name="submit" value="Add to Cart">
             </form>
             </div> <!-- end div 2 -->
         </div> <!-- end div 1 -->

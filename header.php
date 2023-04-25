@@ -16,7 +16,7 @@ $cartTotal = 0;
 
 <nav>
         <h1>One Fell Soup</h1>
-        <button class="hamburger" type="button">
+        <button class="hamburger" type="button" value="Dropdown Menu">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>

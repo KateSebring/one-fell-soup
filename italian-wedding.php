@@ -129,7 +129,7 @@ include("header.php");
             } 
         ?>
             <form action="italian-wedding.php" method="post">
-                <input type="submit" name="submit">
+                <input type="submit" name="submit" value="Add to Cart">
             </form>
             </div> <!-- end div 2 -->
         </div> <!-- end div 1 -->

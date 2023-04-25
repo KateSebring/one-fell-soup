@@ -114,7 +114,7 @@ include("header.php");
     <div class="soup-grid">
     <?php
     try {
-        $selectItem = "SELECT * FROM soup_products ORDER BY productPrice";
+        $selectItem = "SELECT * FROM soup_products ORDER BY productPrice LIMIT 3";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     
@@ -127,7 +127,7 @@ include("header.php");
             $webPageLink = $listItem['webPageLink'];
             echo "<div class='soup-item'><a href='$webPageLink'>";
             // NEED TO CROP IMAGES
-            echo "<img src='$productImg' style='width:100%'>";
+            echo "<img src='$productImg' style='width:100%' alt='A bowl of soup'>";
             echo "<p>$productName<br>$$productPrice</p></a>";
             echo "</div>";
         }
@@ -142,7 +142,7 @@ include("header.php");
     <div class="soup-grid">
     <?php
     try {
-        $selectItem = "SELECT * FROM soup_products ORDER BY productId DESC";
+        $selectItem = "SELECT * FROM soup_products ORDER BY productId DESC LIMIT 3";
         $stmt = $conn->prepare($selectItem);
         $stmt->execute();
     
@@ -155,7 +155,7 @@ include("header.php");
             $webPageLink = $listItem['webPageLink'];
             echo "<div class='soup-item'><a href='$webPageLink'>";
             // NEED TO CROP IMAGES
-            echo "<img src='$productImg' style='width:100%'>";
+            echo "<img src='$productImg' style='width:100%' alt='A bowl of soup'>";
             echo "<p>$productName<br>$$productPrice</p></a>";
             echo "</div>";
         }
