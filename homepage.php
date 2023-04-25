@@ -125,9 +125,11 @@ include("header.php");
             $productImg = $listItem['productImg'];
             $productPrice = $listItem['productPrice'];
             $webPageLink = $listItem['webPageLink'];
+            $imgAlt = $listItem['imgAlt'];
+
             echo "<div class='soup-item'><a href='$webPageLink'>";
             // NEED TO CROP IMAGES
-            echo "<img src='$productImg' style='width:100%' alt='A bowl of soup'>";
+            echo "<img src='$productImg' style='width:100%' alt='$imgAlt'>";
             echo "<p>$productName<br>$$productPrice</p></a>";
             echo "</div>";
         }
@@ -153,9 +155,10 @@ include("header.php");
             $productImg = $listItem['productImg'];
             $productPrice = $listItem['productPrice'];
             $webPageLink = $listItem['webPageLink'];
+            $imgAlt = $listItem['imgAlt'];
+            
             echo "<div class='soup-item'><a href='$webPageLink'>";
-            // NEED TO CROP IMAGES
-            echo "<img src='$productImg' style='width:100%' alt='A bowl of soup'>";
+            echo "<img src='$productImg' style='width:100%' alt='$imgAlt'>";
             echo "<p>$productName<br>$$productPrice</p></a>";
             echo "</div>";
         }
